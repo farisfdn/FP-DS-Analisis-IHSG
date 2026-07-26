@@ -1,0 +1,62 @@
+======================================================================
+FINAL PROJECT PENGANTAR SAINS DATA - ANALISIS PERFORMA IHSG
+======================================================================
+
+Saham untuk proxy index IHSG : 15
+Saham untuk performa sektor  : 44
+
+----------------------------------------------------------------------
+[1] PERFORMA INDEX PROXY IHSG - MULTI TIMEFRAME
+----------------------------------------------------------------------
+DAILY  : 2001-04-16 s.d. 2023-01-06 (5670 titik)
+HOURLY : 2020-04-16 09:00:00 s.d. 2023-01-06 15:00:00 (5676 titik)
+MINUTE : 2022-12-26 08:59:00 s.d. 2023-01-06 15:14:00 (2465 titik, 10 hari terakhir)
+Grafik disimpan -> output/1_index_multi_timeframe.png
+
+----------------------------------------------------------------------
+[2] PERFORMA SEKTOR - MULTI TIMEFRAME (7 / 30 / 90 hari bursa terakhir)
+----------------------------------------------------------------------
+Window                       7D    30D    90D
+Sector                                       
+Consumer Non-Cyclicals     1.71   2.37  14.61
+Healthcare                 0.49   5.72  12.08
+Basic Materials            1.50  -1.12   6.14
+Financials                -3.37  -4.56   4.44
+Consumer Cyclicals        -1.80  -6.40  -5.68
+Properties & Real Estate  -3.65  -7.25  -7.77
+Industrials               -2.56 -10.65 -12.06
+Infrastructures           -0.08  -1.98 -13.20
+Transportation & Logistic -5.31 -12.92 -17.79
+Energy                    -8.83 -27.59 -28.29
+Technology                -0.16 -24.55 -44.43
+Grafik disimpan -> output/2_sector_performance.png
+
+----------------------------------------------------------------------
+[3] MACHINE LEARNING - PREDIKSI ARAH IHSG BESOK (NAIK / TURUN)
+----------------------------------------------------------------------
+Fitur : indikator teknikal (SMA, MACD, RSI, Bollinger %B, momentum,
+        volume relatif) dari index proxy IHSG hari ini.
+Label : 1 jika index proxy BESOK lebih tinggi dari hari ini, 0 jika tidak.
+
+Total sampel (hari bursa)     : 5650
+Proporsi label naik (kelas 1) : 49.26%
+
+Perbandingan performa model (data test = 20% terakhir berdasarkan tanggal):
+Model                                          Akurasi  Precision   Recall       F1      AUC
+Baseline (Dummy - selalu prediksi mayoritas)    52.30%      0.00%    0.00%    0.00%    0.500
+Logistic Regression                             51.42%     49.05%   48.05%   48.55%    0.518
+Random Forest                                   50.71%     48.29%   47.12%   47.70%    0.515
+
+Confusion matrix disimpan  -> output/3_confusion_matrix.png
+Feature importance disimpan -> output/4_feature_importance.png
+
+======================================================================
+CATATAN / DISCLAIMER
+======================================================================
+- Data historis (s.d. awal Jan 2023) untuk latihan machine learning,
+  BUKAN sinyal trading real-time.
+- Akurasi prediksi arah index umumnya mendekati baseline (tebak
+  mayoritas) karena pergerakan index jangka pendek sangat dipengaruhi
+  noise pasar & faktor eksternal di luar indikator teknikal.
+- Proyek ini murni pembelajaran feature engineering + classification
+  dengan scikit-learn, bukan rekomendasi investasi.
