@@ -216,3 +216,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Dataset (terlalu besar untuk repo)
+Dataset/
+
+# Output files
+output/
+
+# Cache
+__pycache__/
