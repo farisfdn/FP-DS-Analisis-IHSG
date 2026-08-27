@@ -4,8 +4,6 @@
 **Nama**  : Faris fadhlullah
 **NIM**   : 25.11.6353
 
----
-
 ## 1. Deskripsi Singkat
 
 Project ini menganalisis data historis saham IHSG (2001-2023) untuk 3 hal:
